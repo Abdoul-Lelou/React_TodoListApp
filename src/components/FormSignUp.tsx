@@ -38,14 +38,12 @@ export const SignUp = () => {
             )
             .then((res) => {
 
-                console.log(res);
                 if (res.data) showToast("User added successfully!")
                 setTimeout(() => {
                     window.location.pathname = 'signin'
                 }, 3000);
             })
             .catch((err) => {
-                console.log(err);
                 if (err?.code == "ERR_BAD_REQUEST") showErrorToast("Email already exist")
                 setEmail(" ")
             })

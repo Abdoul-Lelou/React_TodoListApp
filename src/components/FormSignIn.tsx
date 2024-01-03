@@ -26,7 +26,6 @@ export const SignIn = () => {
 
       })
       .catch((err) => {
-        console.log(err?.code);
         if (err?.code == 'ERR_BAD_REQUEST') showToastMsg(" incorrect email or password")
       })
       .finally(() => {

@@ -53,9 +53,7 @@ export const Dashboard = () => {
         setTodoList([...res.data])
 
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch(() => {})
       .finally(() => {
         setisLoading(false);
       });
@@ -82,12 +80,10 @@ export const Dashboard = () => {
     await axios
       .post(`${url}/todo`, { textTodo: textTodo, title: titleTodo, userId: userId })
       .then((res) => {
-        console.log(res);
         handleUpdateState()
         showToastMsg("Todolist added")
       })
       .catch((err) => {
-        console.log(err?.code);
         if (err?.code == 'ERR_BAD_REQUEST') showToastMsg(" incorrect email or password")
       })
       .finally(() => {

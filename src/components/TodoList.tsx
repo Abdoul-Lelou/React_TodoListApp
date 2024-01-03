@@ -61,9 +61,7 @@ const TodoList: React.FC<todoProps> = ({ todoList, updateState = () => { } }) =>
         setTimeout(() => {
         }, 100);
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch(() => {})
       .finally(() => {
         setIdTodo("")
         setisLoading(false);
@@ -94,9 +92,7 @@ const TodoList: React.FC<todoProps> = ({ todoList, updateState = () => { } }) =>
         showToastMsg("Todolist deleted")
         updateState()
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch(() => {})
       .finally(() => {
         setIdTodo("")
       });
