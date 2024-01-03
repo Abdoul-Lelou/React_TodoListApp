@@ -47,6 +47,7 @@ export const SignUp = () => {
             .catch((err) => {
                 console.log(err);
                 if (err?.code == "ERR_BAD_REQUEST") showErrorToast("Email already exist")
+                setEmail("")
             })
             .finally(() => {
                 setisLoading(false);
