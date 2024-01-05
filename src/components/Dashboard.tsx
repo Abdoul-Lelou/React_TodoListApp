@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import TodoList from './TodoList'
 import axios from 'axios';
 import { url } from '../url';
-import { Modal, ModalHeader, ModalContent, Button, Popup } from 'semantic-ui-react';
+import { Modal, ModalHeader, ModalContent, Button } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -53,7 +53,7 @@ export const Dashboard = () => {
         setTodoList([...res.data])
 
       })
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => {
         setisLoading(false);
       });
@@ -104,19 +104,15 @@ export const Dashboard = () => {
         <span style={{ display: 'flex', justifyContent: 'space-between' }}>
 
           <h2 className="ui header" style={{ marginTop: '2rem' }}>Todo list</h2>
-          <Popup
-            content='Add todolist'
-            trigger={
-              <span
-                className="ui black segment"
-                onClick={() => dispatch({ type: 'open', size: 'tiny' })}
-                style={{ cursor: "pointer", }}
-              >
-                <i className="icon add blue"></i>
-              </span>
-            }
-            position='bottom center'
-          />
+
+          <span
+            className="ui black segment"
+            onClick={() => dispatch({ type: 'open', size: 'tiny' })}
+            style={{ cursor: "pointer", }}
+          >
+            <i className="icon add blue"></i>
+          </span>
+
         </span>
 
         <TodoList

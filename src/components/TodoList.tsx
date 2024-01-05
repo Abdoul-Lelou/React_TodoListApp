@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   ListItem,
   ListIcon,
@@ -11,10 +11,7 @@ import {
   Modal,
   ModalContent,
   ModalHeader,
-  Confirm,
-  Loader,
-  Segment,
-  Popup,
+  Confirm
 } from 'semantic-ui-react'
 import { url } from '../url'
 import { toast } from 'react-toastify';
@@ -61,7 +58,7 @@ const TodoList: React.FC<todoProps> = ({ todoList, updateState = () => { } }) =>
         setTimeout(() => {
         }, 100);
       })
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => {
         setIdTodo("")
         setisLoading(false);
@@ -92,7 +89,7 @@ const TodoList: React.FC<todoProps> = ({ todoList, updateState = () => { } }) =>
         showToastMsg("Todolist deleted")
         updateState()
       })
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => {
         setIdTodo("")
       });
@@ -111,46 +108,35 @@ const TodoList: React.FC<todoProps> = ({ todoList, updateState = () => { } }) =>
 
               <ListItem style={{ padding: "6px" }} key={index}>
 
-                <Popup
-                  content='Edit todolist'
-                  trigger={
-                    <ListIcon
-                      name='edit outline'
-                      color='yellow'
-                      verticalAlign='middle'
-                      style={{ cursor: "pointer" }}
 
-                      onClick={() => {
-                        dispatch({ type: 'open', size: 'tiny' }),
-                          setTextEdit(listItem?.textTodo as any),
-                          setTitleEdit(listItem?.title as any),
-                          setIdTodo(listItem?._id as any)
-                      }}
-                    />
-                  }
-                  position='bottom center'
+                <ListIcon
+                  name='edit outline'
+                  color='yellow'
+                  verticalAlign='middle'
+                  style={{ cursor: "pointer" }}
 
+                  onClick={() => {
+                    dispatch({ type: 'open', size: 'tiny' }),
+                      setTextEdit(listItem?.textTodo as any),
+                      setTitleEdit(listItem?.title as any),
+                      setIdTodo(listItem?._id as any)
+                  }}
                 />
 
                 <ListContent style={{ cursor: "default" }}>
                   <ListHeader as='a' style={{ cursor: "default", marginBottom: ".2rem" }}>{listItem.title?.toUpperCase()}</ListHeader>
                   <ListDescription as='a' style={{ maxWidth: '90vh', overflow: 'hidden', textOverflow: 'ellipsis' }}>{listItem.textTodo?.toLowerCase()}</ListDescription>
                 </ListContent>
-                <Popup
-                  content='Delete todolist'
-                  trigger={
-                    <ListIcon
-                      name='delete'
-                      color='red'
-                      verticalAlign='middle'
-                      style={{ cursor: "pointer" }}
-                      onClick={() => { setDeleteState(true), setIdTodo(listItem?._id as any) }}
 
-                    />
-                  }
-                  position='bottom center'
-                  style={{ color: "red" }}
+                <ListIcon
+                  name='delete'
+                  color='red'
+                  verticalAlign='middle'
+                  style={{ cursor: "pointer" }}
+                  onClick={() => { setDeleteState(true), setIdTodo(listItem?._id as any) }}
+
                 />
+
               </ListItem>
 
             )
